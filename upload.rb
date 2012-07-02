@@ -18,7 +18,7 @@ helpers do
         # Because Heroku installs the app with "--without development",
         # this option is remembered by Bundler and Ember.js needs the gems
         # defined in this group, we are using the option "--wihtout WATWAT"
-        # to overwrite the defined Heroku option: using "--wihtout ''" doesn't
+        # to overwrite the defined Heroku option: using "--without ''" doesn't
         # seem to work :(
         system "bundle install --without WATWAT"
         system "bundle exec rake upload_latest"
