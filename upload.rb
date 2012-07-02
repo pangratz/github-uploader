@@ -15,7 +15,11 @@ helpers do
     Dir.chdir dir do
       Bundler.with_clean_env do
         ENV["PATH"] = "/app/bin:#{ENV["PATH"]}"
-        system "bundle install --gemfile Gemfile --without ''"
+        # Because Heroku installs the app with "--without development",
+        # this option is remembered by Bundler and Ember.js needs the gems
+        # defined in this group, we are using the option "--wihtout WATWAT"
+        # to overwrite the defined Heroku option
+        system "bundle install --without WATWAT"
         system "bundle exec rake upload_latest"
       end
     end
