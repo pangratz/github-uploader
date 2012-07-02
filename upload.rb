@@ -14,9 +14,8 @@ helpers do
     system "git clone #{url} #{dir}"
     Dir.chdir dir do
       Bundler.with_clean_env do
-        ENV["GH_REPO"] = repo_name
         ENV["PATH"] = "/app/bin:#{ENV["PATH"]}"
-        system "bundle install --gemfile Gemfile --without test"
+        system "bundle install --gemfile Gemfile --without ''"
         system "bundle exec rake upload_latest"
       end
     end
